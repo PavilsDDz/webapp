@@ -5,18 +5,35 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+	<script type="text/javascript">
+		 $(document).on('mobileinit', function () {
+                $.mobile.ignoreContentEnabled = true;
+            });
+	</script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 	<div data-role="page" id="page1">
-		<div datd-role="content">
-			<h1>page1</h1>
+		<div class="back_button">
+			<a href=""></a>
 		</div>
-		<div data-role="footer" class="footer_nav">
-			<a href="#page_static">static</a>
+		<div datd-role="content" >
+			<h1>page1</h1>
+			<div data-position="fixed" data-theme="a" data-role="footer" data-enhance="false" class="footer">
+				<div class="footer_nav flex">
+					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
+					<a data-theme="a" href="#page_static" class="link" id="static_link"><div></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div datd-role="page" id="page_static">
+			<div class="back_button">
+			<a href="#page1"></a>
+		</div>
 		<div dara-role="content">
 			<h2>static page</h2>
 		</div>

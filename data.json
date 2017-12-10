@@ -1,0 +1,14 @@
+[
+	{"month":"january","income":1229.45,"expenses":904.56,"pars":[100,50,200]},
+	{"month":"february","income":2000.45,"expenses":455.56,"pars":[200,200,100]},
+	{"month":"march","income":1929.45,"expenses":1004.56,"pars":[300,400,200]},
+	{"month":"april","income":1729.45,"expenses":304.56,"pars":[400,50,200]},
+	{"month":"may","income":529.45,"expenses":1904.56,"pars":[100,50,200]},
+	{"month":"june","income":1429.45,"expenses":1104.56,"pars":[100,50,200]},
+	{"month":"july","income":1529.45,"expenses":304.56,"pars":[100,50,200]},
+	{"month":"august","income":1229.45,"expenses":904.56},
+	{"month":"september","income":1229.45,"expenses":904.56},
+	{"month":"october","income":1229.45,"expenses":904.56},
+	{"month":"november","income":1229.45,"expenses":904.56},
+	{"month":"december","income":1229.45,"expenses":904.56}
+]

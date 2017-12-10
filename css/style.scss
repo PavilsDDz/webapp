@@ -1,18 +1,53 @@
 html {
+		color:#f8f2dc; 
+		font-family: 'Lato', sans-serif;
 	body {
 		.flex{
 			display: flex;
 			display: -webkit-flex;
 
 		}
+		p, span {
+			font-weight: 300;
+		}
+		h2, h3{
+			font-weight:  400;
+		}
+		b{
+			font-weight: 400;
+		}
+		.page {
+			overflow: hidden;
+			display: none;
+		}
+		.content {
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+		}
+		.nav_icon {
+			width: 15vw;
+			height: 15vw;
+			max-width: 30px;
+			max-height: 30px;
+			opacity: 0.3;
+			/*background-color: red;*/
+			background-size: 500% 100%;
+			background-image: url(../img/nav_icons.png);
+		}
+		.back_button {
+			
+		}
 		.footer {
+			
 			position: fixed;
 			bottom: 0;
 			height: 10vh;
 			width: 100%;
 			background-color: #1a1b25;
-				border: none;
-			
+			border: none;
+
+
 			.footer_nav{
 				justify-content: space-around;
 				align-items: center;
@@ -25,14 +60,9 @@ html {
 				height: 100%;
 				a{
 					div{	
-					width: 15vw;
-					height: 15vw;
-					max-width: 30px;
-					max-height: 30px;
-					opacity: 0.3;
-					/*background-color: red;*/
-					background-size: 500% 100%;
-					background-image: url(../img/nav_icons.png);
+					
+					
+					
 					}
 					div.active{
 						opacity: 1
@@ -63,6 +93,60 @@ html {
 				}
 			}
 		}
+		.page{
+			background-color: #161823;
+			.head{
+				justify-content: center;
+				align-items: center;
+				-webkit-justify-content: center;
+				-webkit-align-items: center;
+				.nav_icon{
+					opacity: 1;
+					margin-left: 30px;
+					background-position: 25% 0;
+				}
+			}
+			.time_line {
+				height: 15vh;
+				max-height: 50px;
+				background-color: #060812;
+			}
+			.stats{
+
+				height: 20vh;
+				max-height: 90px;
+				justify-content: space-around;
+				align-items: center;
+				-webkit-justify-content: space-around;
+				-webkit-align-items: center;
+				
+				.stat {
+					justify-content: center;
+					align-items: center;
+					-webkit-justify-content: center;
+					-webkit-align-items: center;
+					width: 40%;
+					height: 80%;
+					border: solid 1px;
+
+					.amount {
+						.dolars{
+							position: relative;
+							.cents{
+								position: absolute;
+								top: 0;
+								left: 100%;
+								font-size: 10px;
+							}
+						}
+					}
+				
+				}
+
+
+				
+			}
+		}
 		#page1 {
 			background-size: contain;
 			background-repeat: no-repeat;
@@ -70,6 +154,67 @@ html {
 			background-image: url(../img/Image1.jpg);
 			background-color: #161823;
 		}
+		#color_rect {
+		    width: 150vw;
+		    height: 43vw;
+		    position: absolute;
+		    top: 62vw;
+		    left: -25vw;
+		    opacity: 0.4;
+			overflow: hidden;
+			-ms-transform: rotate(15deg); /* IE 9 */
+		    -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+		    transform: rotate(15deg);
+
+    		div{
+    		width: 242%;
+		    height: 206%;
+		    position: absolute;
+		    bottom: 3%;
+		    right: -125%;
+			-ms-transform: rotate(-15deg); /* IE 9 */
+		    -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+		    transform: rotate(-15deg);
+
+			background: #8d4de8; 
+    		background: -webkit-linear-gradient(#ff3266, #8d4de8 ); 
+    		background: -o-linear-gradient(#ff3266, #8d4de8 ); 
+    		background: -moz-linear-gradient(#ff3266, #8d4de8 ); 
+    		background: linear-gradient(#ff3266, #8d4de8 ); 
+
+    		}
+		}
+		.post {
+
+			text-shadow: none;
+			z-index: 10;
+			position: relative;
+			position: absolute;
+			bottom: 15vw;
+
+			.post_content{
+
+				h2{
+					font-weight: 300;
+				}
+			}
+
+			.detail{
+				justify-content: space-between;
+				-webkit-justify-content: space-between;
+				align-items: baseline;
+				-webkit-align-items: baseline;
+			}
+		}
+
+
+		/*JQ MOBILE FIXES*/
+
 	}
+		.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+			color: inherit;
+			font-family: inherit;
+			overflow: hidden;
+		}
 	
 }

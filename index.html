@@ -1,42 +1,108 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html>
 <head>
+
 	<title>App</title>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
 	<script type="text/javascript">
 		 $(document).on('mobileinit', function () {
                 $.mobile.ignoreContentEnabled = true;
             });
 	</script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript"></script>
 </head>
 <body>
-	<div data-role="page" id="page1">
+
+
+
+
+
+
+
+	<div data-role="page" id="page1" class="page">
+
 		<div class="back_button">
 			<a href=""></a>
 		</div>
-		<div datd-role="content" >
-			<h1>page1</h1>
+		<div datd-role="content" class="content">
+			
+			<div id="color_rect"><div></div></div>
+			<div class="post">
+				<div class="post_content" data-theme="a"  data-enhance="false">
+					<h2>Who are you and<br>why you’re<br>standing here?</h2>
+					<p>It doesn't matter if you're building the next Facebook, or if you're the director of marketing for an industrial company.</p>
+				</div>
+				<div class="info">
+					<div class="detail flex">
+						<div class="author">
+							<span>By <b>Nocholas O`Brian</b></span>
+							
+						</div>
+						<div class="date">
+							<h3>28 July</h3>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div data-position="fixed" data-theme="a" data-role="footer" data-enhance="false" class="footer">
 				<div class="footer_nav flex">
-					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
-					<a data-theme="a" href="#page_static" class="link" id="static_link"><div></div></a>
-					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
-					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
-					<a data-theme="a" href="" class="link" id="static_link"><div></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div class="nav_icon"></div></a>
+					<a data-theme="a" href="#page_static" class="link" id="static_link"><div class="nav_icon"></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div class="nav_icon"></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div class="nav_icon"></div></a>
+					<a data-theme="a" href="" class="link" id="static_link"><div class="nav_icon"></div></a>
 				</div>
 			</div>
 		</div>
+
 	</div>
-	<div datd-role="page" id="page_static">
-			<div class="back_button">
+
+
+
+
+
+
+	<div datd-role="page" class="page" id="page_static">
+
+		<div class="back_button">
 			<a href="#page1"></a>
 		</div>
+
 		<div dara-role="content">
-			<h2>static page</h2>
+			<div class="head flex">
+				<h2>static</h2><div class="nav_icon"></div>
+			</div>
+			<div class="time_line">
+				
+			</div>
+			<div class="diagarm">
+				
+			</div>
+			<div>
+				
+			</div>
+			<div class="stats flex">
+				<div class="income stat flex">
+					<div class="amount"><span>+$</span><span class="dolars">1000<span class="cents">25</span></span><div class="small_icon"></div></div>
+				</div>
+				<div class="expenses stat flex">
+					<div class="amount"><span>-$</span><span class="dolars">800<span class="cents">75</span></span><div class="small_icon"></div></div>
+				</div>
+			</div>
+
 		</div>
 	</div>
+
+
+
+
+
+
+
 </body>
 </html>

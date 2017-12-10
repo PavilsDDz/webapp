@@ -1,0 +1,252 @@
+<script type="text/javascript" src="js/jquery.js"></script>
+<div style="position: relative;">
+<canvas style="border: solid" width="500" height="500" id="canvas1">
+	
+</canvas>
+<div class="par active" id="par1"></div>
+<div class="par " id="par2"></div>
+<div class="par " id="par3"></div>
+</div>
+<div class="income"></div>
+<div class="expenses"></div>
+
+<button id="next" onmousedown="caulculate_dif()">next</button>
+<button id="prev">brev</button>
+<style type="text/css">
+	.par {
+		width: 10px;
+		height: 10px;
+		position: absolute;
+		background-color: red;
+		top: 0;
+		left: 0;
+	}
+</style>
+
+<script type="text/javascript">
+	var months
+	var values_to 
+	var values
+	var old_rot = 0
+	var csl = 0.4 	//circle radius large
+	var csm = 0.37 	//circle radius medium
+	var css = 0.3 	//circle radius small
+	$.getJSON("data.json", function(json) {
+	    // console.log(json); // this will show the info it in firebug console
+	    months = json
+		values = months[1]//['january']
+		console.log(values)
+		draw_diag(values['income'],values['expenses'],values['pars'])
+	});
+		canvas = document.getElementById('canvas1')
+		cw = canvas.width
+		ch = canvas.height
+		ctx = canvas.getContext('2d')
+	 	ctx.translate(cw/2,cw/2)
+		ctx.rotate(210*Math.PI/180)
+
+		var grd=ctx.createRadialGradient(0,0,cw*0.45,0,0,0);
+		grd.addColorStop(0,"#FF2366");
+		grd.addColorStop(0.3,"#8D4DE8");
+
+		var grd2=ctx.createRadialGradient(0,0,cw*0.45,0,0,0);
+		grd2.addColorStop(0,"#FD3F2F");
+		grd2.addColorStop(0.3,"#FACE15");
+
+	var now_deg	= {}
+	var pars_now = []
+	function draw_diag(a,b,pars){
+
+		total = a+b+Math.abs(a-b)
+		let dif = Math.abs(a-b)
+		step = 300/total
+
+		pars_now.push(pars[0]*step*Math.PI/180,pars[1]*step*Math.PI/180,pars[2]*step*Math.PI/180)
+
+
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*csl, 0, step*a * Math.PI/180);
+		now_deg.a=(step*a*Math.PI/180)
+		ctx.lineTo(0,0)
+
+		//ctx.stroke()
+
+		ctx.fillStyle = grd
+		ctx.fill()
+
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*csl, 0, pars[0]*step * Math.PI/180);
+		now_deg.a=(step*a*Math.PI/180)
+		ctx.lineTo(0,0)
+		ctx.fillStyle = "rgba(0,0,0,0.2)"
+		ctx.fill()
+
+		ctx.rotate(step*a*Math.PI/180)
+		old_rot += step*a*Math.PI/180
+
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*csm, 0, step*dif * Math.PI/180);
+		now_deg.c=step*dif*Math.PI/180
+
+		ctx.lineTo(0,0)
+		ctx.fillStyle = '#aa11dd'
+		ctx.fill()
+
+		ctx.rotate(step*dif*Math.PI/180)
+		old_rot += step*dif*Math.PI/180 
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*csl, 0, step*b * Math.PI/180);
+		now_deg.b=(step*b*Math.PI/180)
+
+		ctx.lineTo(0,0)
+		ctx.fillStyle = grd2
+		ctx.fill()
+
+
+		ctx.beginPath()
+
+		ctx.arc(0, 0, cw*css, 0, 2 * Math.PI);
+
+
+		ctx.fillStyle = "#ffffff"
+		ctx.fill()
+
+		$('.income').html(values['income'])
+		$('.expenses').html(values['expenses'])
+		console.log(now_deg.a,now_deg.c,now_deg.b)
+	}
+	speed = 0.01
+	progress = 0
+	dif = {}
+	now = {}
+	dif_deg = []
+	dif_pars = []
+	now_pars = []
+	dif_pars = []
+	function caulculate_dif(){
+		values_to = months[4]
+
+		dif.a = values_to['income']
+		dif.b = values_to['expenses']
+		dif.c = Math.abs(dif.a - dif.b)
+		dif.total = values_to['income']+values_to['expenses']+Math.abs(values_to['income']-values_to['expenses'])
+		dif.step = 300/dif.total
+
+		now.a = values['income']
+		now.b = values['expenses']
+		now.c = Math.abs(now.a-now.b)
+
+		dif_deg.push(now_deg.a - (dif.a*dif.step)*Math.PI/180)
+		dif_deg.push(now_deg.c - (dif.c*dif.step)*Math.PI/180)
+		dif_deg.push(now_deg.b - (dif.b*dif.step)*Math.PI/180)
+
+		dif_pars.push(
+			pars_now[0]-values_to['pars'][0]*dif.step*Math.PI/180,
+			pars_now[1]-values_to['pars'][1]*dif.step*Math.PI/180,
+			pars_now[2]-values_to['pars'][2]*dif.step*Math.PI/180
+		)
+
+
+		console.log(now_deg.a , (dif.a*dif.step)*Math.PI/180)
+
+
+		
+		ctx.rotate(-old_rot)
+		animate_diag()
+
+		$('.income').html(values_to['income'])
+		$('.expenses').html(values_to['expenses'])
+		console.log(dif_deg)
+	}
+	progress_curve = 0
+	function animate_diag(){
+		old_rot = 0
+		progress+=speed
+		//ctx.restore()
+
+		ctx.clearRect(-cw,-ch,2*cw,2*ch)
+	
+		
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csl,0,now_deg.a-(dif_deg[0]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = grd
+		ctx.fill()
+
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csl,0,pars_now[0]-(dif_pars[0]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = 'rgba(0,0,0,0.2)'
+		ctx.fill()
+
+
+		r1=now_deg.a-(dif_deg[0]*progress)
+		old_rot+=r1
+		ctx.rotate(r1)
+
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csm,0,now_deg.c-(dif_deg[1]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = '#aa11dd'
+		ctx.fill()
+
+
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csm,0,pars_now[1]-(dif_pars[1]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = 'rgba(0,0,0,0.2)'
+		ctx.fill()
+		
+
+		r2=now_deg.c-(dif_deg[1]*progress)
+		old_rot+=r2
+		ctx.rotate(r2)
+
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csl,0,now_deg.b-(dif_deg[2]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = grd2
+		ctx.fill()
+
+		ctx.beginPath()
+		ctx.arc(0,0,cw*csl,0,pars_now[2]-(dif_pars[2]*progress))
+		ctx.lineTo(0,0)
+		ctx.fillStyle = 'rgba(0,0,0,0.2)'
+		ctx.fill()
+
+		ctx.rotate(-old_rot)
+
+		ctx.beginPath()
+
+
+		ctx.arc(0, 0, cw*css, 0, 2 * Math.PI);
+
+
+		ctx.fillStyle = "#ffffff"
+		ctx.fill()
+		console.log(Math.sin(progress*Math.PI))
+		$('#par1').css({
+			'left':
+			Math.sin(pars_now[0]+dif_pars[0]*progress+210*Math.PI/180)*(cw/2+cw/2)*csl+250,
+			'top':
+			Math.cos(pars_now[0]+dif_pars[0]*progress+210*Math.PI/180)*(cw/2+cw/2)*csl+250})
+
+		$('#par3').css({
+			'left':
+			Math.sin(pars_now[1]-dif_pars[1]*progress+(r1)-60*Math.PI/180)*(cw/2+cw/2)*csm+250,
+			'top':
+			-Math.cos(pars_now[1]-dif_pars[1]*progress+(r1)-60*Math.PI/180)*(cw/2+cw/2)*csm+250})
+
+		$('#par2').css({
+			'left':
+			Math.sin(pars_now[2]-dif_pars[2]*progress+(r1+r2)-60*Math.PI/180)*(cw/2+cw/2)*csl+250,
+			'top':
+			-Math.cos(pars_now[2]-dif_pars[2]*progress+(r1+r2)-60*Math.PI/180)*(cw/2+cw/2)*csl+250})
+
+		//console.log(progress)
+		if (progress<1) {
+			requestAnimationFrame(animate_diag)
+		}
+	}
+
+</script>

@@ -95,6 +95,30 @@ html {
 		}
 		.page{
 			background-color: #161823;
+			.back_button{
+				position: absolute;
+				top: 3vw;
+				left: 3vw;
+				width: 8vw;
+				height: 8vw;
+				max-height: 45px;
+				max-width: 45px;
+				border-radius: 50%;
+				border: solid #666 1px;
+
+				div{
+					width: 8vw;
+					height: 8vw;
+					max-height: 45px;
+					max-width: 45px;
+					cursor: pointer;
+					justify-content: center;
+					align-items: center;
+					-webkit-justify-content: center;
+					-webkit-align-items: center;
+					font-size: 8vw
+				}
+			}
 			.head{
 				justify-content: center;
 				align-items: center;
@@ -110,6 +134,7 @@ html {
 				height: 15vh;
 				max-height: 50px;
 				background-color: #060812;
+				white-space: nowrap;
 			}
 			.stats{
 
@@ -127,7 +152,8 @@ html {
 					-webkit-align-items: center;
 					width: 40%;
 					height: 80%;
-					border: solid 1px;
+					border: solid 1px #0b78e3;
+					border-radius: 5px;
 
 					.amount {
 						.dolars{
@@ -206,6 +232,22 @@ html {
 				-webkit-align-items: baseline;
 			}
 		}
+		.par {
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		background-color: red;
+		top: 0;
+		left: 0;
+		background-color: #fff;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	.month {
+		display: inline-block;
+		margin: 0 7vw 0 7vw;
+		cursor: pointer;
+	}
 
 
 		/*JQ MOBILE FIXES*/
@@ -216,5 +258,14 @@ html {
 			font-family: inherit;
 			overflow: hidden;
 		}
+		.ui-page-theme-a a:visited, .ui-bar-a a:visited, .ui-body-a a:visited, .ui-group-theme-a a:visited {
+			color: inherit;
+			text-decoration: none!important;
+		}
+		.ui-page-theme-a , .ui-bar-a , .ui-body-a , .ui-group-theme-a  {
+			color: inherit;
+			text-decoration: none!important;
+		}
+
 	
 }

@@ -27,7 +27,7 @@
 	<div data-role="page" id="page1" class="page">
 
 		<div class="back_button">
-			<a href=""></a>
+			<a href=""><div class="flex"><span ><</span></div></a>
 		</div>
 		<div datd-role="content" class="content">
 			
@@ -70,18 +70,25 @@
 	<div datd-role="page" class="page" id="page_static">
 
 		<div class="back_button">
-			<a href="#page1"></a>
+			<a href="#page1"><div class="flex"><span ><</span></div></a>
 		</div>
 
 		<div dara-role="content">
 			<div class="head flex">
 				<h2>static</h2><div class="nav_icon"></div>
 			</div>
-			<div class="time_line">
+			<div class="time_line ">
 				
 			</div>
 			<div class="diagarm">
-				
+				<div style="position: relative;">
+				<canvas  width="500" height="500" id="canvas1">
+					
+				</canvas>
+				<div class="par active" id="par1"></div>
+				<div class="par" id="par2"></div>
+				<div class="par" id="par3"></div>
+				</div>
 			</div>
 			<div>
 				
@@ -105,4 +112,5 @@
 
 
 </body>
+<script type="text/javascript" src="js/diagram.js"></script>
 </html>

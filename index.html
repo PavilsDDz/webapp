@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html>
 <head>
 
@@ -11,7 +12,8 @@
 	<script type="text/javascript">
 		 $(document).on('mobileinit', function () {
                 $.mobile.ignoreContentEnabled = true;
-            });
+           
+		 });
 	</script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript"></script>
@@ -48,6 +50,11 @@
 							<h3>28 July</h3>
 						</div>
 					</div>
+					<div class="likes flex">
+						<div class="like like1"></div>
+						<div class="like like2"></div>
+						<div class="likes_total"><div  class="amount">+76</div></div>
+					</div>
 				</div>
 			</div>
 			<div data-position="fixed" data-theme="a" data-role="footer" data-enhance="false" class="footer">
@@ -71,35 +78,57 @@
 	<div datd-role="page" class="page" id="page_static">
 
 
-		<div dara-role="content">
+		<div dara-role="content" class="flex page_content">
 			<div class="head flex">
 				<div class="back_button">
 					<a href="#page1"><div class="flex"></div></a>
 				</div>
 				<h2>Statistic</h2><div class="nav_icon"></div>
 			</div>
-			<div class="time_line">
+			<div class="time_line" id="time_line">
 				
 			</div>
-			<div class="diagarm">
-				<div style="position: relative;">
-				<canvas  width="500" height="500" id="canvas1">
+			<div class="diagarm flex">
+				<div class="balance flex">
+					<h3>$1229.34<span>25</span></h3>
+					<p>balance</p>
+				</div>
+				<div class="dwrap flex" style="">
 					
-				</canvas>
-				<div class="par active" id="par1"></div>
-				<div class="par" id="par2"></div>
-				<div class="par" id="par3"></div>
+						<canvas  width="500" height="500" id="canvas1">
+						</canvas>
+					
+				<div class="par flex active" id="par1"></div>
+				<div class="par flex" id="par2"></div>
+				<div class="par flex" id="par3"></div>
 				</div>
 			</div>
-			<div>
-				
+			<div class="disp_pars">
+				<div class="info_par active flex">
+					<div class="summ flex"><div class="icon"></div><h4>$230</h4></div>
+					<div class="place">
+						<p>food and restaurants</p>
+					</div>
+				</div>
+				<div class="info_par flex">
+					<div class="summ flex"><div class="icon"></div><h4>$350</h4></div>
+					<div class="place">
+						<p>music and entertainment</p>
+					</div>
+				</div>
+				<div class="info_par flex">
+					<div class="summ flex"><div class="icon"></div><h4>$120</h4></div>
+					<div class="place">
+						<p>sport and activities</p>
+					</div>
+				</div>
 			</div>
 			<div class="stats flex">
 				<div class="income stat flex">
-					<div class="amount"><span>+$</span><span class="dolars">1000<span class="cents">25</span></span><div class="small_icon"></div></div>
+					<div class="amount"><div class="small_icon"></div></div>
 				</div>
 				<div class="expenses stat flex">
-					<div class="amount"><span>-$</span><span class="dolars">800<span class="cents">75</span></span><div class="small_icon"></div></div>
+					<div class="amount"><div class="small_icon"></div></div>
 				</div>
 			</div>
 
@@ -114,4 +143,21 @@
 
 </body>
 <script type="text/javascript" src="js/diagram.js"></script>
+<script type="text/javascript">
+	function scrollHorizontally(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        document.getElementById('time_line').scrollLeft -= (delta*40); // Multiplied by 40
+        e.preventDefault();
+    }
+    if (document.getElementById('time_line').addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        document.getElementById('time_line').addEventListener("mousewheel", scrollHorizontally, false);
+        // Firefox
+        document.getElementById('time_line').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        document.getElementById('time_line').attachEvent("onmousewheel", scrollHorizontally);
+    }
+</script>
 </html>

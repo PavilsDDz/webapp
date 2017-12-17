@@ -1,7 +1,9 @@
 html {
   color: #f8f2dc;
-  font-family: 'Lato', sans-serif; }
+  font-family: 'Lato', sans-serif;
+  background-color: #161823; }
   html body {
+    background-color: #161823;
     /*JQ MOBILE FIXES*/ }
     html body .flex {
       display: flex;
@@ -34,7 +36,10 @@ html {
       height: 10vh;
       width: 100%;
       background-color: #1a1b25;
-      border: none; }
+      border: none;
+      box-sizing: border-box;
+      padding: 0 calc(10px + 2vw);
+      border-top: solid 1px #313131; }
       html body .footer .footer_nav {
         justify-content: space-around;
         align-items: center;
@@ -54,7 +59,7 @@ html {
         html body .footer .footer_nav a:nth-child(3) div {
           background-position: 50% 0; }
         html body .footer .footer_nav a:nth-child(4) div {
-          background-position: 76% 0; }
+          background-position: 74% 0; }
         html body .footer .footer_nav a:nth-child(5) div {
           background-position: 100% 0; }
     html body .page {
@@ -101,12 +106,47 @@ html {
           background-position: 25% 0;
           margin-right: auto; }
       html body .page .time_line {
-        height: 15vh;
+        height: calc(1em + 4vh);
         max-height: 50px;
         background-color: #060812;
-        white-space: nowrap; }
+        white-space: nowrap;
+        overflow-x: scroll;
+        overflow-y: visible;
+        padding-bottom: 2px;
+        background-clip: content-box;
+        box-sizing: border-box; }
+      html body .page .time_line::-webkit-scrollbar {
+        display: none; }
+      html body .page .month {
+        display: inline-block;
+        margin: 0 7vw 0 7vw;
+        padding: 0 calc(5px + 2vw);
+        cursor: pointer;
+        position: relative;
+        /*max-height: 100%;*/
+        box-sizing: border-box;
+        height: calc(1em + 4vh);
+        /*border-bottom: solid;*/ }
+        html body .page .month p {
+          margin: 1.6vh 0 2vh 0px;
+          font-size: 1em; }
+        html body .page .month .line {
+          width: 100%;
+          position: absolute;
+          height: 3px;
+          border-radius: 3px;
+          bottom: 0;
+          left: 0;
+          background-color: #0b78e3;
+          opacity: 0; }
+        html body .page .month .month.active .line {
+          opacity: 1; }
+        html body .page .month p {
+          /*margin:0;*/ }
+      html body .page .month.active .line {
+        opacity: 1; }
       html body .page .stats {
-        height: 20vh;
+        height: 13vh;
         max-height: 90px;
         justify-content: space-between;
         align-items: center;
@@ -120,15 +160,18 @@ html {
           -webkit-align-items: center;
           width: 40%;
           height: 80%;
-          border: solid 1px #0b78e3;
           border-radius: 5px; }
-          html body .page .stats .stat .amount .dolars {
+          html body .page .stats .stat h3 {
             position: relative; }
-            html body .page .stats .stat .amount .dolars .cents {
+            html body .page .stats .stat h3 span {
               position: absolute;
-              top: 0;
+              top: -0.2em;
               left: 100%;
-              font-size: 10px; }
+              font-size: 0.6em; }
+        html body .page .stats .expenses {
+          border: solid 1px #ff2366; }
+        html body .page .stats .income {
+          border: solid 1px #0b78e3; }
     html body #page1 {
       background-size: contain;
       background-repeat: no-repeat;
@@ -169,34 +212,141 @@ html {
       z-index: 10;
       position: relative;
       position: absolute;
-      bottom: 15vw; }
+      bottom: 10vh;
+      box-sizing: border-box;
+      padding: 0 calc(10px + 2vw); }
       html body .post .post_content h2 {
         font-weight: 300;
         font-size: calc(3.5vw + 3.5vh);
         width: 70%; }
-      html body .post .detail {
-        justify-content: space-between;
-        -webkit-justify-content: space-between;
-        align-items: baseline;
-        -webkit-align-items: baseline; }
+      html body .post .info {
+        border-top: solid 1px #313131; }
+        html body .post .info .detail {
+          justify-content: space-between;
+          -webkit-justify-content: space-between;
+          align-items: baseline;
+          -webkit-align-items: baseline; }
+          html body .post .info .detail h3 {
+            font-size: 1em;
+            margin: 15px 0; }
+    html body .likes {
+      width: 100%;
+      margin-bottom: 15px; }
+      html body .likes .like {
+        width: calc(23px + 0.5vw);
+        width: calc(23px + 0.5vw);
+        max-width: 30px;
+        max-height: 30px;
+        border-radius: 15px;
+        background-size: cover;
+        background-position: center; }
+      html body .likes .like:nth-child(1) {
+        background-image: url(../img/like1.png); }
+      html body .likes .like:nth-child(2) {
+        background-image: url(../img/like2.png);
+        margin: 0 8px; }
+      html body .likes .likes_total .amount {
+        padding: 0 8px;
+        height: calc(23px + 0.5vw);
+        background-color: #fd51d9;
+        border-radius: 15px; }
+    html body #page_static .page_content {
+      flex-direction: column;
+      -webkit-flex-direction: column;
+      min-height: 100vh; }
     html body .par {
-      width: 20px;
-      height: 20px;
+      width: calc(15px + 1vw);
+      height: calc(15px + 1vw);
       position: absolute;
-      background-color: red;
+      border: solid 1px white;
       top: 0;
       left: 0;
-      background-color: #fff;
       border-radius: 50%;
-      cursor: pointer; }
-    html body .month {
-      display: inline-block;
-      margin: 0 7vw 0 7vw;
-      cursor: pointer; }
+      cursor: pointer;
+      background-image: url(../img/w_circle.svg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 30%; }
+    html body .par.active {
+      background-size: 150%; }
+    html body .diagarm {
+      justify-content: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      -webkit-align-items: center;
+      position: relative;
+      margin: auto 0;
+      width: 85vw;
+      margin: auto; }
+      html body .diagarm .dwrap {
+        width: fit-content;
+        position: absolute;
+        top: 0;
+        left: 0; }
+      html body .diagarm .balance {
+        width: 46vw;
+        /* referes to var css (circle size small) in diagram.js */
+        height: 46vw;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 1;
+        justify-content: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        -webkit-align-items: center;
+        position: relative;
+        flex-direction: column;
+        -webkit-flex-direction: column; }
+        html body .diagarm .balance h3 {
+          margin: 0;
+          position: relative;
+          font-size: 1.2em; }
+          html body .diagarm .balance h3 span {
+            font-size: 0.6em;
+            position: absolute;
+            left: 100%;
+            top: 0; }
+        html body .diagarm .balance p {
+          margin: 0 0 0 0;
+          font-size: 0.9em; }
+      html body .diagarm canvas {
+        margin: auto; }
+    html body .disp_pars {
+      margin: 0 0 auto 0; }
+      html body .disp_pars .info_par {
+        justify-content: center;
+        -webkit-justify-content: center;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        align-items: center;
+        -webkit-align-items: center;
+        display: none; }
+      html body .disp_pars .info_par.active {
+        display: flex;
+        display: -webkit-flex;
+        opacity: 1; }
+      html body .disp_pars h4 {
+        margin: 0;
+        font-weight: 400; }
+      html body .disp_pars p {
+        margin: 0;
+        font-size: 0.9em; }
+      html body .disp_pars .summ {
+        width: fit-content;
+        align-items: center;
+        -webkit-align-items: center; }
+        html body .disp_pars .summ .icon {
+          /*width: 15px;
+          height: 15px;
+          background-color: red;*/ }
+      html body .disp_pars .place {
+        width: fit-content; }
   html .ui-overlay-a, html .ui-page-theme-a, html .ui-page-theme-a .ui-panel-wrapper {
     color: inherit;
     font-family: inherit;
-    overflow: hidden; }
+    overflow: hidden;
+    text-shadow: none;
+    background-color: #161823; }
   html .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html .ui-group-theme-a a:visited {
     color: inherit;
     text-decoration: none !important; }

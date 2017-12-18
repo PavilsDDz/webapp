@@ -96,7 +96,8 @@ html {
         -webkit-align-items: center;
         position: relative;
         margin: 5vh calc(10px + 2vw);
-        height: 0; }
+        height: 0;
+        width: 100%; }
         html body .page .head h2 {
           margin: 0;
           font-size: calc(14px + 0.6vw); }
@@ -152,7 +153,8 @@ html {
         align-items: center;
         -webkit-justify-content: space-between;
         -webkit-align-items: center;
-        padding: 0 calc(10px + 2vw); }
+        padding: 0 calc(10px + 2vw);
+        width: 100%; }
         html body .page .stats .stat {
           justify-content: center;
           align-items: center;
@@ -167,17 +169,27 @@ html {
               position: absolute;
               top: -0.2em;
               left: 100%;
-              font-size: 0.6em; }
+              font-size: 0.6em;
+              padding-bottom: 0.6em;
+              background-image: url(../img/icon1.png);
+              background-repeat: no-repeat;
+              /*background-position: center bottom;*/
+              background-size: 200%; }
         html body .page .stats .expenses {
           border: solid 1px #ff2366; }
+          html body .page .stats .expenses span {
+            background-position: right bottom; }
         html body .page .stats .income {
           border: solid 1px #0b78e3; }
+          html body .page .stats .income span {
+            background-position: left bottom; }
     html body #page1 {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: top;
       background-image: url(../img/Image1.jpg);
-      background-color: #161823; }
+      background-color: #161823;
+      overflow: hidden; }
     html body #color_rect {
       width: 150vw;
       height: 30vh;
@@ -249,10 +261,13 @@ html {
         padding: 0 8px;
         height: calc(23px + 0.5vw);
         background-color: #fd51d9;
-        border-radius: 15px; }
+        border-radius: 15px;
+        line-height: 1.6em; }
     html body #page_static .page_content {
-      flex-direction: column;
-      -webkit-flex-direction: column;
+      /*flex-direction: column;
+      -webkit-flex-direction: column;*/
+      flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
       min-height: 100vh; }
     html body .par {
       width: calc(15px + 1vw);
@@ -312,7 +327,7 @@ html {
       html body .diagarm canvas {
         margin: auto; }
     html body .disp_pars {
-      margin: 0 0 auto 0; }
+      margin: 0 auto auto auto; }
       html body .disp_pars .info_par {
         justify-content: center;
         -webkit-justify-content: center;

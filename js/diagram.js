@@ -99,6 +99,7 @@
 
 		var grd
 		var grd2
+		var grd3
 		
 
 	var now_deg	= {}
@@ -114,6 +115,10 @@
 		grd2.addColorStop(0,"#FD3F2F");
 		grd2.addColorStop(0.5,"#FACE15");
 
+		grd3=ctx.createRadialGradient(0,0,cw*0.45,0,0,0);
+		grd3.addColorStop(0,"#6956ec");
+		grd3.addColorStop(0.5,"#56b2ba");
+
 	 	ctx.translate(cw/2,cw/2)
 		ctx.rotate(210*Math.PI/180)
 
@@ -124,6 +129,11 @@
 
 		pars_now.push(pars[0]*step*Math.PI/180,pars[1]*step*Math.PI/180,pars[2]*step*Math.PI/180)
 
+
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*0.35, 0, 2 * Math.PI);
+		ctx.fillStyle = "#0e0f1a"
+		ctx.fill()
 
 		ctx.beginPath()
 		ctx.arc(0, 0, cw*csl, 0, step*a * Math.PI/180);
@@ -150,7 +160,7 @@
 		now_deg.c=step*dif*Math.PI/180
 
 		ctx.lineTo(0,0)
-		ctx.fillStyle = '#aa11dd'
+		ctx.fillStyle = grd3
 		ctx.fill()
 
 		ctx.beginPath()
@@ -259,8 +269,13 @@
 		progress+=speed
 		//ctx.restore()
 
+
 		ctx.clearRect(-cw,-ch,2*cw,2*ch)
 	
+		ctx.beginPath()
+		ctx.arc(0, 0, cw*0.35, 0, 2 * Math.PI);
+		ctx.fillStyle = "#0e0f1a"
+		ctx.fill()
 		
 		ctx.beginPath()
 		ctx.arc(0,0,cw*csl,0,now_deg.a-(dif_deg[0]*progress))
@@ -282,7 +297,7 @@
 		ctx.beginPath()
 		ctx.arc(0,0,cw*csm,0,now_deg.c-(dif_deg[1]*progress))
 		ctx.lineTo(0,0)
-		ctx.fillStyle = '#aa11dd'
+		ctx.fillStyle = grd3
 		ctx.fill()
 
 

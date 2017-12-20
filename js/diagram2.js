@@ -6,7 +6,7 @@
 	var csl = 0.4 	//circle radius large
 	var csm = 0.37 	//circle radius medium
 	var css = 0.23 	//circle radius small
-	var speed = 0.03 //diagram speed
+	var speed = 0.04 //diagram speed
 
 	var r1, r2;
 	$.getJSON("data.json", function(json) {
@@ -239,8 +239,12 @@
 
 		place_divs(0)
 
+		progress_curve +=speed
+		
+
+		progress = Math.sin((progress_curve*(Math.PI/4)))
 		old_rot = 0
-		progress+=speed
+		
 
 
 		ctx.clearRect(-cw,-ch,2*cw,2*ch)
@@ -303,13 +307,14 @@
 		ctx.fillStyle = "#161823"
 		ctx.fill()
 		
-		 if (progress<1) {
+		 if (progress<0.99) {
 
 			requestAnimationFrame(animate_diag)
 		}else{
 			place_divs(1)
 			
 			progress = 0
+			progress_curve = 0
 
 			now_deg.a = now_deg.a-dif_deg[0]
 			now_deg.c = now_deg.c-dif_deg[1]
@@ -361,14 +366,14 @@
 	}
 
 
-
+	var month_now = 0
 	$(window).resize(function(){
 		Ww=$(window).width()
 		Wh=$(window).height()
 		 ch = canvas.height = cw = canvas.width = Ww*0.85/Wh < 0.6 ? Ww*0.85 : Wh*0.6
 		
 		$('.diagarm').css({'height':ch,'width':cw})
-		draw_diag(months[0]['income'],months[0]['expenses'],months[0]['pars'])
+		draw_diag(months[month_now]['income'],months[month_now]['expenses'],months[month_now]['pars'])
 		$('.balance').css({'width':cw*css*2,'height':ch*css*2})
 	
 	})
@@ -378,7 +383,8 @@
 	$('.time_line').delegate('.month','click',function(){
 			if(clickable){
 				clickable=false
-				caulculate_dif($(this).index())
+				month_now = $(this).index()
+				caulculate_dif(month_now)
 				$(this).children('.line').animate({'opacity':1},{
 					duration: 300,
 					step: function(o){

@@ -95,7 +95,7 @@ html {
         -webkit-justify-content: center;
         -webkit-align-items: center;
         position: relative;
-        margin: 5vh calc(10px + 2vw);
+        margin: 6vh calc(10px + 2vw) 4vh calc(10px + 2vw);
         height: 0;
         width: 100%; }
         html body .page .head h2 {
@@ -108,6 +108,7 @@ html {
           margin-right: auto; }
       html body .page .time_line {
         height: calc(1.5em + 4vh);
+        box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.2);
         /*max-height: 50px;*/
         background-color: #060812;
         white-space: nowrap;
@@ -248,7 +249,7 @@ html {
       margin-bottom: 15px; }
       html body .likes .like {
         width: calc(23px + 0.5vw);
-        width: calc(23px + 0.5vw);
+        height: calc(23px + 0.5vw);
         max-width: 30px;
         max-height: 30px;
         border-radius: 15px;
@@ -264,7 +265,7 @@ html {
         height: calc(23px + 0.5vw);
         background-color: #fd51d9;
         border-radius: 15px;
-        line-height: 1.6em; }
+        line-height: calc(1.5em + 0.5vw); }
     html body #page_static .page_content {
       /*flex-direction: column;
       -webkit-flex-direction: column;*/

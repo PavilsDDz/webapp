@@ -107,15 +107,17 @@ html {
           background-position: 25% 0;
           margin-right: auto; }
       html body .page .time_line {
-        height: calc(1em + 4vh);
-        max-height: 50px;
+        height: calc(1.5em + 4vh);
+        /*max-height: 50px;*/
         background-color: #060812;
         white-space: nowrap;
         overflow-x: scroll;
         overflow-y: visible;
         padding-bottom: 2px;
         background-clip: content-box;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        -ms-overflow-style: none;
+        overflow: -moz-scrollbars-none; }
       html body .page .time_line::-webkit-scrollbar {
         display: none; }
       html body .page .month {
@@ -126,10 +128,10 @@ html {
         position: relative;
         /*max-height: 100%;*/
         box-sizing: border-box;
-        height: calc(1em + 4vh);
+        height: calc(1.5em + 4vh);
         /*border-bottom: solid;*/ }
         html body .page .month p {
-          margin: 1.6vh 0 2vh 0px;
+          margin: 2.1vh 0 2vh 0px;
           font-size: 1em; }
         html body .page .month .line {
           width: 100%;
@@ -356,6 +358,11 @@ html {
           background-color: red;*/ }
       html body .disp_pars .place {
         width: fit-content; }
+      @media screen and (orientation: landscape) {
+        html body .disp_pars {
+          margin: auto auto auto 0;
+          min-width: 166px;
+          border-radius: 5px; } }
   html .ui-overlay-a, html .ui-page-theme-a, html .ui-page-theme-a .ui-panel-wrapper {
     color: inherit;
     font-family: inherit;
